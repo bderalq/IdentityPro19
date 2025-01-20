@@ -1,0 +1,57 @@
+﻿@using IdentityPro19.Models.ViewModels
+@model RegisterViewModel
+@{
+	ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+<form asp-action="Register" asp-controller="Account" method="post">
+	<div asp-validation-summary="ModelOnly" class=" =text-danger"></div>
+	<div class="card shadow-sm">
+		<div class="card-body">
+			<table class="table table-bordered">
+
+				<tr>
+					<td><label asp-for="Email" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="Email" class="form-control" placeholder="Enter Email" />
+						<span asp-validation-for="Email" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label asp-for="ConfirmEmail" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="ConfirmEmail" class="form-control" placeholder="Confirm Email" />
+						<span asp-validation-for="ConfirmEmail" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label asp-for="Password" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="Password" class="form-control" placeholder="Enter Password" />
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label asp-for="ConfirmPassword" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+						<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label asp-for="Mobile" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="Mobile" class="form-control" placeholder="Enter Phone Number" />
+						<span asp-validation-for="Mobile" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="text-center">
+						<input type="submit" class="btn btn-outline-success btn-lg" value="Register" />
+						<a asp-action="Login">I Have Account</a>
+					</td>
+			</table>
+		</div>
+	</div>
+</form>
