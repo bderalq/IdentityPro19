@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> signInManager;
+@* @inject UserManager<IdentityUser> userManager; *@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -25,9 +29,26 @@
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-						</li>
+					</ul>
+					<ul class="navbar-nav ms-auto">
+						
+						@if (signInManager.IsSignedIn(User))
+						{
+							<li class="nav-item">
+								@* <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout @User.Identity.Name</a> *@
+								<form asp-action="Logout" asp-controller = "Account" method="post" >
+									<input type = "submit" value="logout" @User.Identity!.Name />
+								</form>
+							</li>
+						}
+						else{
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+							</li>
+						}
 					</ul>
 				</div>
 			</div>

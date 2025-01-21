@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Humanizer;
+using static IdentityPro19.Models.ApplicationUser;
 
 namespace IdentityPro19.Models.ViewModels
 {
@@ -28,6 +30,8 @@ namespace IdentityPro19.Models.ViewModels
         public string ConfirmPassword { get; set; }
 
         public string? Mobile { get; set; }  
+
+        public Genders Gender{ get; set; }  
 
     }
 }

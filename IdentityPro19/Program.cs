@@ -1,4 +1,5 @@
 using IdentityPro19.Data;
+using IdentityPro19.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,8 +15,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 //Config Identity NEW 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
-
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 12;
+    options.Password.RequireUppercase = false;
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

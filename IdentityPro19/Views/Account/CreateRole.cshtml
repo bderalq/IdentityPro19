@@ -1,0 +1,29 @@
+﻿@using IdentityPro19.Models.ViewModels
+@model CreateRoleViewModel
+@{
+    ViewData["Title"] = "CreateRole";
+}
+
+<h1>CreateRole</h1>
+
+<form asp-action="CreateRole" asp-controller="Account" method="post">
+	<div asp-validation-summary="All" class=" =text-danger"></div>
+	<div class="card shadow-sm">
+		<div class="card-body">
+			<table class="table table-bordered">
+
+				<tr>
+					<td><label asp-for="RoleName" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="RoleName" class="form-control" placeholder="Enter Role Name" />
+						<span asp-validation-for="RoleName" class="text-danger"></span>
+					</td>
+				</tr>
+				
+					<td colspan="2" class="text-center">
+						<input type="submit" class="btn btn-outline-success btn-lg" value="CreateRole" />
+					</td>
+			</table>
+		</div>
+	</div>
+</form>
