@@ -10,5 +10,9 @@ namespace IdentityPro19.Data
         {
         }
         DbSet<ApplicationUser> Gender { get; set; }
+        DbSet<Student> Students { get; set; }
+        DbSet<Course> Courses { get; set; } 
+        DbSet<StudentCourse> StudentCourses { get; set; }   
+
     }
 }

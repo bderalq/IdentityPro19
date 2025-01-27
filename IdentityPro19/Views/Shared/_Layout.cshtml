@@ -40,6 +40,11 @@
 									<input type = "submit" value="logout" @User.Identity!.Name />
 								</form>
 							</li>
+							@if (User.IsInRole("Instructor")){
+								<li class="nav-item">
+									<a asp-action="RolesList" asp-controller="Account">Roles List</a>
+								</li>
+							}
 						}
 						else{
 							<li class="nav-item">

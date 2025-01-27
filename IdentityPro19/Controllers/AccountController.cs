@@ -1,11 +1,13 @@
 ﻿using System.Data;
 using IdentityPro19.Models;
 using IdentityPro19.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 // program, controller, appdbcontext to change from identityuser to applicationuser, add more columns to the DB.
 namespace IdentityPro19.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         #region InjectedServices
@@ -22,10 +24,12 @@ namespace IdentityPro19.Controllers
         }
         #endregion
         #region Users
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -52,11 +56,12 @@ namespace IdentityPro19.Controllers
             }
             return View(model);
         }
-
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -87,10 +92,10 @@ namespace IdentityPro19.Controllers
         #endregion
 
         #region roles 
+        [Authorize(Roles = "Instructor")]
         public async Task<IActionResult> RolesList()
-        {
-            return View(roleManager.Roles);
-            #endregion
+        {       
+                return View(roleManager.Roles);
         }
         public IActionResult CreateRole()
         {
@@ -147,3 +152,4 @@ namespace IdentityPro19.Controllers
         }
     }
 }
+#endregion
